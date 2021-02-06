@@ -1,4 +1,9 @@
-.osrsInventory {
+div.displayArea {
+	display: flex;
+	justify-content: center;
+}
+
+div.osrsInventory {
 	width: 204px;
 	height: 275px;
 	background: url('../images/inventoryTab.png');
