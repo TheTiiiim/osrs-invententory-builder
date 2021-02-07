@@ -1,0 +1,27 @@
+div.osrsInventory {
+	width: 204px;
+	height: 275px;
+	background: url('../images/inventoryTab.png');
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+div.exampleInventory {
+	width: 204px;
+	height: 275px;
+	background: url('../images/exampleGrid.png');
+	background-repeat: no-repeat;
+}
+
+div.osrsInventory>div.inventoryGrid {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto auto auto;
+	position: absolute;
+	top: 15px;
+	left: 23px;
+	bottom: 12px;
+	right: 23px;
+	grid-column-gap: 10px;
+	grid-row-gap: 4px;
+}

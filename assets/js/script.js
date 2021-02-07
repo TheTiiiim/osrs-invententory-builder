@@ -6,7 +6,7 @@ $(function () {
 		// create a table with it
 		.then(function (data) {
 			// lowercase (d)ataTable returns jquery object
-			return $("#dataTable").DataTable({
+			let table = $("#dataTable").DataTable({
 				"data": data,
 				"iDisplayLength": 50,
 				"order": [[2, "asc"]],
@@ -34,6 +34,11 @@ $(function () {
 					}
 				]
 			});
+
+			// let table be resizable
+			$(table.table().node()).css("width", "");
+
+			return table;
 		})
 		// add event listener to table rows
 		.then(function (table) {
