@@ -1,11 +1,13 @@
 # OSRS Inventory Picker
 
-## Links
+[View the live page here](https://thetiiiim.github.io/osrs-invententory-builder)
 
-[Osrsbox Api](https://github.com/osrsbox/osrsbox-api)
+## Built With
 
-[DataTables](https://datatables.net/manual/)
+* [Osrsbox Api](https://github.com/osrsbox/osrsbox-api)
 
-[Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
+* [DataTables](https://datatables.net/manual/)
 
-[jquery](https://api.jquery.com/)
+* [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
+
+* [jquery](https://api.jquery.com/)
