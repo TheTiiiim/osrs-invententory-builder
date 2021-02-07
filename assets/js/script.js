@@ -1,37 +1,46 @@
 $(function () {
-	// let search = prompt("item name")
-	// getItem(search).then(console.log);
 
-	getItems().then(data => {
-		$("#dataTable").DataTable({
-			"data": data,
-			"iDisplayLength": 50,
-			"order": [[2, "asc"]],
-			"fnRowCallback": function (nRow, aData, iDisplayIndex) {
-				$('td:eq(0)', nRow).html(`<img src=${getIconSrc(aData["id"])}>`);
-				return nRow;
-			},
-			"columns": [
-				{
-					title: "Icon",
-					data: "id",
-					render: () => { return "" }
+	let inventory = new OsrsInventory($(".osrsInventory"));
+	// get item data
+	getItems()
+		// create a table with it
+		.then(function (data) {
+			// lowercase (d)ataTable returns jquery object
+			return $("#dataTable").DataTable({
+				"data": data,
+				"iDisplayLength": 50,
+				"order": [[2, "asc"]],
+				"rowCallback": function (row, data) {
+					$('td:eq(0)', row).html(`<img src=${getIconSrc(data["id"])}>`);
+					return row;
 				},
-				{
-					title: "Name",
-					data: "name"
-				},
-				{
-					title: "Id",
-					data: "id"
-				},
-				{
-					title: "Type",
-					data: "type"
-				}
-			]
-		});
-	});
+				"columns": [
+					{
+						title: "Icon",
+						data: "id",
+						render: () => { return "" }
+					},
+					{
+						title: "Name",
+						data: "name"
+					},
+					{
+						title: "Id",
+						data: "id"
+					},
+					{
+						title: "Type",
+						data: "type"
+					}
+				]
+			});
+		})
+		// add event listener to table rows
+		.then(function (table) {
+			table.rows().nodes().to$().on("click", function (e) {
+				inventory.addItem(table.row(this).data());
+			});
+		})
 
 	function getItem(name) {
 		name = name.toLowerCase();
@@ -51,8 +60,8 @@ $(function () {
 			return array;
 		});;
 	}
-
-	function getIconSrc(id) {
-		return `https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`;
-	}
 });
+
+function getIconSrc(id) {
+	return `https://www.osrsbox.com/osrsbox-db/items-icons/${id}.png`;
+}
