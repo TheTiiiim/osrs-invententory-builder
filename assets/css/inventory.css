@@ -25,3 +25,8 @@ div.osrsInventory>div.inventoryGrid {
 	grid-column-gap: 10px;
 	grid-row-gap: 4px;
 }
+
+div.osrsInventory>div.inventoryGrid>div.inventorySlot {
+	height: 32px;
+	width: 32px;
+}

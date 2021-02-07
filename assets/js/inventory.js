@@ -23,12 +23,19 @@ class OsrsInventory {
 
 		// find earliest empty div.inventorySlot
 		let target;
-		this.#grid.each(function (slot) {
-			// console.log(slot.children())
+		this.#grid.children().each(function (index) {
+			if ($(this).children().length === 0) {
+				target = $(this);
+				return false;
+			}
 		});
 
 		// append it 
-		// target.append($("<img>").attr("src", getIconSrc(item.id)));
+		if (target) {
+			target.append($("<img>").attr("src", getIconSrc(item.id)));
+		} else {
+			throw Error("inventory is full");
+		}
 		return this;
 	}
 }
