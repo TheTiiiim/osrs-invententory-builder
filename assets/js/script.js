@@ -1,6 +1,8 @@
 $(function () {
 
-	let inventory = new OsrsInventory($(".osrsInventory"));
+	let osrsInv = new OsrsInventory($(".osrsInventory"));
+	osrsInv.init();
+
 	// get item data
 	getItems()
 		// create a table with it
@@ -43,9 +45,11 @@ $(function () {
 		// add event listener to table rows
 		.then(function (table) {
 			table.rows().nodes().to$().on("click", function (e) {
-				inventory.addItem(table.row(this).data());
+				osrsInv.addItem(table.row(this).data());
 			});
 		})
+
+	// functions
 
 	function getItem(name) {
 		name = name.toLowerCase();

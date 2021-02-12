@@ -1,8 +1,10 @@
 
 class OsrsInventory {
 	#grid;
+	#isInitilized;
 
 	constructor(jquery) {
+		this.#isInitilized = false;
 		if (!jquery.hasClass("osrsInventory")) {
 			throw Error("Jquery object must have class 'osrsInventory'");
 		}
@@ -10,6 +12,9 @@ class OsrsInventory {
 			throw Error("must select one jquery object");
 		}
 		this.$ = jquery;
+	}
+
+	init() {
 		this.#grid = $("<div>").addClass("inventoryGrid");
 		this.$.empty().append(this.#grid);
 		for (let x = 0; x < 4; x++) {
@@ -17,9 +22,12 @@ class OsrsInventory {
 				this.#grid.append($("<div>").addClass("inventorySlot"))
 			}
 		}
+		this.#isInitilized = true;
 	}
 
 	addItem(item) {
+
+		if (!this.#isInitilized) throw Error("Inventory not initilized")
 
 		// find earliest empty div.inventorySlot
 		let target;
